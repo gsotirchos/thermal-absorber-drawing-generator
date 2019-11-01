@@ -21,7 +21,7 @@ class Gui:
         TB_WID = 7
         self.was_horizontal = False
 
-        HOMEPATH = 'C:' + environ["HOMEPATH"]
+        HOMEPATH = 'C:' + environ['HOMEPATH']
         if getattr(sys, 'frozen', False):
             CURRENT_DIR = path.dirname(path.realpath(sys.executable))
         elif __file__:
@@ -39,8 +39,8 @@ class Gui:
             'vel': 210,
             'acc': 350,
             'pres': 1.6,
-            'Z1': 5,  # Z for riser Φ8 or smaller
-            'Z2': 4,  # Z for riser larger than Φ8
+            'Z1': 5,  # Z for riser diam. 8 or smaller
+            'Z2': 4,  # Z for riser larger than diam. 8
             'P1': 6900,     # -------------------
             'pulse1': 0.3,  # -  for selective  -
             'f1': 155,      # -------------------
@@ -95,7 +95,7 @@ class Gui:
         # define main window layout
         self.layout = [
             # absobrber info
-            [sg.Text('Όνομα/Κωδικός/πληροφορίες\nαπορροφητή',
+            [sg.Text("Όνομα/Κωδικός/πληροφορίες" + '\n' + "απορροφητή",
              size=(LCOL_WIDTH, 2),
              auto_size_text=False,
              justification='right'),
@@ -103,7 +103,7 @@ class Gui:
                           enable_events=True, key='absorber_info')],
 
             # absorber drawing number
-            [sg.Text('Αριθμός Σχεδίου',
+            [sg.Text("Αριθμός Σχεδίου",
              size=(LCOL_WIDTH, 1),
              auto_size_text=False,
              justification='right'),
@@ -111,21 +111,21 @@ class Gui:
              enable_events=True, key='drawing_number')],
 
             # absorber type
-            [sg.Text('Τύπος απορροφητή', size=(LCOL_WIDTH, 2),
+            [sg.Text("Τύπος απορροφητή", size=(LCOL_WIDTH, 2),
              auto_size_text=False,
              justification='right'),
              sg.Frame(layout=[
-                [sg.Radio('Κατακόρυφος', 'absorber_type_radio',
+                [sg.Radio("Κατακόρυφος", 'absorber_type_radio',
                  default=True,
                  enable_events=True,
                  key='is_vertical')],
-                [sg.Radio('Οριζόντιος', 'absorber_type_radio',
+                [sg.Radio("Οριζόντιος", 'absorber_type_radio',
                  enable_events=True,
                  key='is_horizontal')],
-                [sg.Radio('Με λωρίδες (φινάκια)', 'absorber_type_radio',
+                [sg.Radio("Με λωρίδες (φινάκια)", 'absorber_type_radio',
                  enable_events=True,
                  key='is_strips')],
-                [sg.Radio('Με μαίανδρο', 'absorber_type_radio',
+                [sg.Radio("Με μαίανδρο", 'absorber_type_radio',
                  enable_events=True,
                  key='is_meander')]
              ],
@@ -134,42 +134,42 @@ class Gui:
              )],
 
             # panel/strips section
-            [sg.Frame('Χαρακτηριστικά φύλλου/λωρίδων (mm)', layout=[
+            [sg.Frame("Χαρακτηριστικά φύλλου/λωρίδων " + '(mm)', layout=[
                 # panel/strips material
-                [sg.Text('Υλικό', size=(FRAME_LCOL_WIDTH, 2),
+                [sg.Text("Υλικό", size=(FRAME_LCOL_WIDTH, 2),
                          auto_size_text=False,
                          justification='right'),
                  sg.Frame('', [
-                    [sg.Radio('Επιλεκτικό', 'panel_mat_radio',
+                    [sg.Radio("Επιλεκτικό", 'panel_mat_radio',
                      default=True, key='is_selective')],
-                    [sg.Radio('Επιλεκτικό 0.4', 'panel_mat_radio',
+                    [sg.Radio("Επιλεκτικό 0.4", 'panel_mat_radio',
                      key='is_selective04')],
                     [sg.Radio('TSS', 'panel_mat_radio',
                      key='is_tss')],
-                    [sg.Radio('Βαμμένο', 'panel_mat_radio',
+                    [sg.Radio("Βαμμένο", 'panel_mat_radio',
                      key='is_painted')],
-                    [sg.Radio('Χαλκός', 'panel_mat_radio',
+                    [sg.Radio("Χαλκός", 'panel_mat_radio',
                      key='is_copper')]
                  ],
                     relief=sg.RELIEF_FLAT
                  )],
 
                 # panel/strips dimensions
-                [sg.Text('Μήκος', size=(FRAME_LCOL_WIDTH, 1),
+                [sg.Text("Μήκος", size=(FRAME_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right',
                  key='panel_length_label'),
                  sg.InputText(do_not_clear=True, size=(TB_WID, 1),
                  key='panel_length')],
 
-                [sg.Text('Πλάτος', size=(FRAME_LCOL_WIDTH, 1),
+                [sg.Text("Πλάτος", size=(FRAME_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right',
                  key='panel_width_label'),
                  sg.InputText(do_not_clear=True, size=(TB_WID, 1),
                  key='panel_width')],
 
-                # [sg.Text('Αριθμός', size=(FRAME_LCOL_WIDTH, 1),
+                # [sg.Text("Αριθμός", size=(FRAME_LCOL_WIDTH, 1),
                 #  auto_size_text=False,
                 #  justification='right', text_color='gray',
                 #  key='strip_count_label'),
@@ -177,36 +177,37 @@ class Gui:
                 #  key='strip_count', enable_events=True, disabled=True)],
 
                 [sg.Text('', size=(FRAME_LCOL_WIDTH, 1)),
-                 sg.Checkbox('Οπές στις γωνίες',
+                 sg.Checkbox("Οπές στις γωνίες",
                  default=False,
                  key='panel_holes')]
              ]),
 
              # grid section
-             sg.Frame('Χαρακτηριστικά grid σωληνών (mm)', layout=[
+             sg.Frame("Χαρακτηριστικά " + 'grid' + " σωληνών " + '(mm)',
+                 layout=[
                 # header diameter
-                [sg.Text('⌀ header', size=(FRAME2_LCOL_WIDTH, 1),
+                [sg.Text("Φ" + ' header', size=(FRAME2_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right'),
                  sg.InputText('22', do_not_clear=True, size=(TB_WID, 1),
                  key='header_diameter')],
 
                 # riser diameter
-                [sg.Text('⌀ riser', size=(FRAME2_LCOL_WIDTH, 1),
+                [sg.Text("Φ" + ' riser', size=(FRAME2_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right'),
                  sg.InputText('8', do_not_clear=True, size=(TB_WID, 1),
                  key='riser_diameter')],
 
                 # head to head distance
-                [sg.Text('Κέντρο-κέντρο', size=(FRAME2_LCOL_WIDTH, 1),
+                [sg.Text("Κέντρο-κέντρο", size=(FRAME2_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right'),
                  sg.InputText(do_not_clear=True, size=(TB_WID, 1),
                  key='head_to_head')],
 
                 # free header exit length
-                [sg.Text('Μήκος ελεύθερης\nεξόδου header',
+                [sg.Text("Μήκος ελεύθερης" + '\n' + "εξόδου "+ 'header',
                  size=(FRAME2_LCOL_WIDTH, 2),
                  auto_size_text=False,
                  justification='right'),
@@ -214,7 +215,7 @@ class Gui:
                  key='header_exit_length')],
 
                 # header total length
-                [sg.Text('Μήκος header\nμε κλειστή έξοδο',
+                [sg.Text("Μήκος " + 'header\n' + "με κλειστή έξοδο",
                  size=(FRAME2_LCOL_WIDTH, 2),
                  auto_size_text=False,
                  justification='right', text_color='gray',
@@ -224,7 +225,7 @@ class Gui:
 
                 # closed exits
                 [sg.Text('', size=(int(FRAME2_LCOL_WIDTH/2-2), 1)),
-                 sg.Frame('Κλειστές έξοδοι', [
+                 sg.Frame("Κλειστές έξοδοι", [
                     [sg.Checkbox('', default=False,
                      enable_events=True,
                      key='up_left_exit_closed'),
@@ -240,7 +241,7 @@ class Gui:
                  ])],
 
                 # distance of 1st riser from edge
-                [sg.Text('Απόσταση α\' riser\nαπό άκρη φύλλου',
+                [sg.Text("Απόσταση α" + '\' riser\n'+" από άκρη φύλλου",
                  size=(FRAME2_LCOL_WIDTH, 2),
                  auto_size_text=False,
                  justification='right'),
@@ -248,21 +249,21 @@ class Gui:
                  key='riser_edge_distance')],
 
                 # riser step
-                [sg.Text('Βήμα riser', size=(FRAME2_LCOL_WIDTH, 1),
+                [sg.Text("Βήμα " + 'riser', size=(FRAME2_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right'),
                  sg.InputText(do_not_clear=True, size=(TB_WID, 1),
                  key='riser_step')],
 
                 # riser count
-                [sg.Text('Αριθμός riser', size=(FRAME2_LCOL_WIDTH, 1),
+                [sg.Text("Αριθμός "+'riser', size=(FRAME2_LCOL_WIDTH,1),
                  auto_size_text=False,
                  justification='right', key='riser_count_label'),
                  sg.InputText(do_not_clear=True, size=(TB_WID, 1),
                  key='riser_count', enable_events=True)],
 
                 # riser count
-                [sg.Text('Πλάτος μαιάνδρου', size=(FRAME2_LCOL_WIDTH, 1),
+                [sg.Text("Πλάτος μαιάνδρου", size=(FRAME2_LCOL_WIDTH, 1),
                  auto_size_text=False,
                  justification='right', text_color='gray',
                  key='meander_width_label'),
@@ -276,10 +277,10 @@ class Gui:
 
             # buttons
             [sg.Text(' ' * 35),
-             sg.Button('Δημιουργία', size=(10, 1), key='save_button'),
-             sg.Button('Έξοδος', size=(10, 1), key='exit_button'),
+             sg.Button("Δημιουργία", size=(10, 1), key='save_button'),
+             sg.Button("Έξοδος", size=(10, 1), key='exit_button'),
              sg.Text(' ' * 12),
-             sg.Button('Ρυθμίσεις\nμηχανής', size=(8, 2),
+             sg.Button("Ρυθμίσεις" + '\n' + "μηχανής", size=(8, 2),
                        key='settings_button')]
         ]
 
@@ -339,9 +340,9 @@ class Gui:
             # buttons
             [sg.Button('OK', size=(10, 1),
                        key='OK_button'),
-             sg.Button('Αποθήκευση', size=(10, 1),
+             sg.Button("Αποθήκευση", size=(10, 1),
                        key='export_button'),
-             sg.Button('Επαναφορά', size=(10, 1),
+             sg.Button("Επαναφορά", size=(10, 1),
                        key='reset_button')]
         ]
 
@@ -518,54 +519,60 @@ class Gui:
 
                 if type(values[key]) == str:
                     if not self.is_float(values[key]):
-                        return 'Σφάλμα: επιτρέπονται μόνο θετικοί αριθμοί'
+                        return "Σφάλμα: επιτρέπονται μόνο θετικοί αριθμοί"
         except AttributeError:
-            return 'Σφαλμα: μη έγκυρη τιμή'
+            return "Σφαλμα: μη έγκυρη τιμή"
 
         # check head-to-head+header diameter and panel width or length
         if values['is_horizontal']:
             if (values['head_to_head'] + values['header_diameter'] >
                values['panel_width']):
-                return ('Σφάλμα: το πλάτος του φύλλου δεν καλύπτει '
-                        'πλήρως τους headers')
+                return ("Σφάλμα: το πλάτος του φύλλου δεν καλύπτει "
+                        "πλήρως τους headers")
         else:
             if (values['head_to_head'] + values['header_diameter'] >
                values['panel_length']):
-                return ('Σφάλμα: το μήκος του φύλλου δεν καλύπτει '
-                        'πλήρως τους headers')
+                return ("Σφάλμα: το μήκος του φύλλου δεν καλύπτει "
+                        "πλήρως τους headers")
 
         # check tube diameters
         if values['riser_diameter'] > values['header_diameter']:
-            return ('Σφαλμα: η διάμετρος των riser δεν μπορεί να '
-                    'είναι μεγαλύτερη από αυτή των header')
+            return ("Σφαλμα: η διάμετρος των " + 'riser' +
+                    "δεν μπορεί να είναι μεγαλύτερη από αυτή των " + 
+                    'header')
 
         # check riser step and riser diameter
         if values['riser_step'] < values['riser_diameter']:
-            return ('Σφαλμα: το βήμα των riser δεν μπορεί να είναι '
-                    'μικρότερο από τη διάμετρό τους')
+            return ("Σφαλμα: το βήμα των " + 'riser' + " δεν μπορεί " +
+                    "να είναι μικρότερο από τη διάμετρό τους")
 
         # check riser step and panel length or width
         if values['is_horizontal'] or values['is_meander']:
             if values['riser_step'] > values['panel_length']:
-                return ('Σφαλμα: το βήμα των riser δεν μπορεί να είναι '
-                        'μεγαλύτερο από το μήκος του \nφύλλου (σε '
-                        'οριζόντιο απορροφητή ή μαίανδρο)')
+                return ("Σφαλμα: το βήμα των " + 'riser' +
+                        " δεν μπορεί να είναι μεγαλύτερο από το " +
+                        "μήκος του " + '\n' + "φύλλου (σε "
+                        "οριζόντιο απορροφητή ή μαίανδρο)")
         else:
             if values['riser_step'] > values['panel_width']:
-                return ('Σφαλμα: το βήμα των riser δεν μπορεί να είναι '
-                        'μεγαλύτερο από το συνολκό πλάτος του \nφύλλου')
+                return ("Σφαλμα: το βήμα των " + 'riser' +
+                        " δεν μπορεί να είναι μεγαλύτερο από το " +
+                        "συνολκό πλάτος του" + '\n' + "φύλλου")
 
         # check riser edge distance and panel width or length
         if values['is_horizontal']:
             if values['riser_edge_distance'] > values['panel_length']:
-                return ('Σφαλμα: η απόσταση α\' από την άκρη του φύλλου '
-                        'δεν μπορεί να είναι μεγαλύτερη \nαπό το μήκος '
-                        'του φύλλου (σε οριζόντιο απορροφητή)')
+                return ("Σφαλμα: η απόσταση α" + '\'' +
+                        " από την άκρη του φύλλου "
+                        "δεν μπορεί να είναι μεγαλύτερη " + '\n' +
+                        "από το μήκος του φύλλου (σε οριζόντιο " + 
+                        "απορροφητή)")
         else:
             if values['riser_edge_distance'] > values['panel_width']:
-                return ('Σφαλμα: η απόσταση α\' από την άκρη του φύλλου '
-                        'δεν μπορεί να είναι μεγαλύτερη \nαπό το '
-                        'συνολικό πλάτος των φύλλων')
+                return ("Σφαλμα: η απόσταση α" + '\'' +
+                        " από την άκρη του φύλλου "
+                        "δεν μπορεί να είναι μεγαλύτερη " + '\n' +
+                        "από το συνολικό πλάτος των φύλλων")
 
         # check header length and free exit length
         if True in (values['up_left_exit_closed'],
@@ -573,28 +580,28 @@ class Gui:
                     values['down_left_exit_closed'],
                     values['down_right_exit_closed']):
             if values['header_length'] < values['header_exit_length']:
-                return ('Σφαλμα: το μήκος της ελεύθερης εξόδου δεν '
-                        'μπορεί να έιναι μεγαλύτερο από το \nμήκος του '
-                        'header')
+                return ("Σφαλμα: το μήκος της ελεύθερης εξόδου δεν "
+                        "μπορεί να έιναι μεγαλύτερο από το " + '\n' +
+                        "μήκος του " + 'header')
 
         # check for floating risers
         if values['is_horizontal'] or values['is_meander']:
             if ((values['riser_count']-1)*values['riser_step'] +
                values['riser_edge_distance'] > values['panel_length']):
-                return ('Σφαλμα: δεν χωράει τόσο μεγάλος αριθμός '
-                        'riser στο μήκος του φύλλου')
+                return ("Σφαλμα: δεν χωράει τόσο μεγάλος αριθμός "
+                        "riser στο μήκος του φύλλου")
         else:
             if ((values['riser_count']-1)*values['riser_step'] +
                values['riser_edge_distance'] > values['panel_width']):
-                return ('Σφαλμα: δεν χωράει τόσο μεγάλος αριθμός '
-                        'riser στο πλατος του φύλλου')
+                return ("Σφαλμα: δεν χωράει τόσο μεγάλος αριθμός "
+                        "riser στο πλατος του φύλλου")
 
         # check for meander width and panel width
         if values['is_meander']:
             if (values['riser_edge_distance'] + values['meander_width'] >
                values['panel_width']):
-                return ('Σφάλμα: o μαίανδρος riser είναι μεγαλύτερος σε '
-                        'πλάτος από το φύλλο')
+                return ("Σφάλμα: ο μαίανδρος " + 'riser' +
+                        " είναι μεγαλύτερος σε πλάτος από το φύλλο")
 
         return ''
 
@@ -604,9 +611,9 @@ class Gui:
             for key in values.keys():
                 if type(values[key]) == str:
                     if not self.is_float(values[key]):
-                        return 'Σφάλμα: επιτρέπονται μόνο θετικοί αριθμοί'
+                        return "Σφάλμα: επιτρέπονται μόνο θετικοί αριθμοί"
         except AttributeError:
-            return 'Σφαλμα: μη έγκυρη τιμή'
+            return "Σφαλμα: μη έγκυρη τιμή"
 
         return ''
 
@@ -622,31 +629,34 @@ class Gui:
                 # write separators
                 if key == 'Z1':
                     the_file.write(
-                        '\n# Z για riser Φ8 ή μικρότερους\n'
+                        ('\n# Z' + " για " + 'riser' +
+                            " Φ8 ή μικρότερους" + '\n')
                     )
                 elif key == 'Z2':
                     the_file.write(
-                        '\n# Z για riser μεγαλύτερους από Φ8\n'
+                        ('\n# Z' + " για " + 'riser' +
+                            "μεγαλύτερους από Φ8" + '\n')
                     )
                 elif key == 'P1':
                     the_file.write(
-                        '\n# ρυθμίσεις για επιλεκτικά φύλλα\n'
+                        '\n#'+" ρυθμίσεις για επιλεκτικά φύλλα"+'\n'
                     )
                 elif key == 'P2':
                     the_file.write(
-                        '\n# ρυθμίσεις για επιλεκτικά φύλλα με 0.4\n'
+                        ('\n#' + " ρυθμίσεις για επιλεκτικά φύλλα με " +
+                            '0.4\n')
                     )
                 elif key == 'P3':
                     the_file.write(
-                        '\n# ρυθμίσεις για TSS φύλλα\n'
+                        ('\n#' + " ρυθμίσεις για "+'TSS'+" φύλλα" + '\n'
                     )
                 elif key == 'P4':
                     the_file.write(
-                        '\n# ρυθμίσεις για βαμμένα φύλλα\n'
+                        '\n#' + " ρυθμίσεις για βαμμένα φύλλα" + '\n'
                     )
                 elif key == 'P5':
                     the_file.write(
-                        '\n# ρυθμίσεις για φύλλα από χαλκό\n'
+                        '\n#' + " ρυθμίσεις για φύλλα από χαλκό" + '\n'
                     )
                 the_file.write(key+'=' + str(self.settings[key]) + '\n')
 
@@ -674,7 +684,7 @@ class Gui:
         # print loaded settings file
         if self.SETTINGS_FILE_EXISTS:
             self.show_settings_error(
-                ('Οι αρχικές ρυθμίσεις φορτώθηκαν από το αρχείο:\n' +
+                ("Οι αρχικές ρυθμίσεις φορτώθηκαν από το αρχείο:"+'\n' +
                  self.SETTINGS_FILE)
             )
 
@@ -713,7 +723,7 @@ class Gui:
 
     def run_settings(self, main_values):
         # draw settings window
-        self.settings_window = (sg.Window('Ρυθμίσεις Μηχανής',
+        self.settings_window = (sg.Window("Ρυθμίσεις Μηχανής",
                                 keep_on_top=True)
                                 .Layout(self.settings_layout))
         self.settings_window.Finalize()
@@ -747,7 +757,7 @@ class Gui:
                 self.export_settings_to_file()
 
                 self.show_settings_error(
-                    ('Οι ρυθμίσεις αποθηκεύτηκαν στο αρχείο:\n' +
+                    ("Οι ρυθμίσεις αποθηκεύτηκαν στο αρχείο:" + '\n' +
                      self.SETTINGS_FILE)
                 )
 
@@ -758,10 +768,10 @@ class Gui:
 
                 loaded_from = ''
                 if self.SETTINGS_FILE_EXISTS:
-                    loaded_from = ' από:\n' + self.SETTINGS_FILE
+                    loaded_from = " από:" + '\n' + self.SETTINGS_FILE
 
                 self.show_settings_error(
-                    ('Οι ρυθμήσεις επαναφέρθηκαν στις αρχικές' +
+                    ("Οι ρυθμήσεις επαναφέρθηκαν στις αρχικές" +
                      loaded_from)
                 )
 
@@ -795,7 +805,7 @@ class Gui:
 
     def run(self):
         # draw main window
-        self.window = (sg.Window('Δημιουργία Εντολής Εργασίας')
+        self.window = (sg.Window("Δημιουργία Εντολής Εργασίας")
                        .Layout(self.layout))
 
         # initialize machine settings
@@ -840,9 +850,9 @@ class Gui:
 
                 # prompt user to supply file name
                 self.output_file = sg.PopupGetFile(
-                    title='Αποθήκευση αρχείου',
-                    message=('Παρακαλώ εισάγετε την τοποθεσία του '
-                             'παραγόμενου αρχείου'),
+                    title="Αποθήκευση αρχείου",
+                    message=("Παρακαλώ εισάγετε την τοποθεσία του "
+                             "παραγόμενου αρχείου"),
                     save_as=True,
                     default_path=(self.default_output_folder +
                                   self.guessed_name + '.pdf'),
@@ -869,8 +879,9 @@ class Gui:
                     self.drawing.make_job_order(self.output_file, values,
                                                 self.settings)
 
-                    self.show_error(('Το αρχέιο αποθηκεύτηκε στην '
-                                     'τοποθεσία:\n' + self.output_file))
+                    self.show_error(("Το αρχέιο αποθηκεύτηκε στην "
+                                     "τοποθεσία:" + '\n' +
+                                     self.output_file))
 
                 # re-enable buttons
                 self.window.Element('save_button').Update(disabled=False)
@@ -947,7 +958,7 @@ class Gui:
                     values['drawing_number'] = (values['drawing_number']
                                                 .replace(char, '-'))
 
-                for char in ['\t', ':', '?', '\"', '<', '>']:
+                for char in ['\t', ':', '?', '<', '>']:
                     guessed_name = guessed_name.replace(char, '')
                     values['drawing_number'] = (values['drawing_number']
                                                 .replace(char, ''))

@@ -15,10 +15,10 @@ class Drawing:
         self.THIN = int(3*self.MM)
         self.THICK = int(5*self.MM)
         self.FONT_SIZE = 130*self.MM
-        self.FONT = ImageFont.truetype("arial.ttf", self.FONT_SIZE)
-        self.FONT_S = ImageFont.truetype("arial.ttf",
+        self.FONT = ImageFont.truetype('arial.ttf', self.FONT_SIZE)
+        self.FONT_S = ImageFont.truetype('arial.ttf',
                                          int(self.FONT_SIZE/2))
-        self.FONT_XS = ImageFont.truetype("arial.ttf",
+        self.FONT_XS = ImageFont.truetype('arial.ttf',
                                           int(5*self.FONT_SIZE/11))
 
         self.drawing = Image.new('RGB', size=(self.DRAWING_WIDTH,
@@ -910,22 +910,23 @@ class Drawing:
         # print material info
         label = ''
         # if values['is_selective']:
-        #     panel_material_text = 'επιλεκτικό'
+        #     panel_material_text = "επιλεκτικό"
         # elif values['is_selective04']:
-        #     panel_material_text = 'επιλεκτικό 0.4'
+        #     panel_material_text = "επιλεκτικό 0.4"
         # elif values['is_painted']:
-        #     panel_material_text = 'βαμμένο'
+        #     panel_material_text = "βαμμένο"
         # elif values['is_copper']:
-        #     panel_material_text = 'από χαλκό'
+        #     panel_material_text = "από χαλκό"
         # if values['is_strips']:
-        #     panel_type_text = str(values['riser_count']) + ' Φινάκια'
+        #     panel_type_text = str(values['riser_count']) + " Φινάκια"
         # else:
-        #     panel_type_text = 'Φύλλο'
+        #     panel_type_text = "Φύλλο"
         # label = (panel_type_text + ': ' + panel_material_text + ', ' +
         #          str(round(values['panel_length'])) + 'X' +
         #          str(round(values['panel_width'])))
-        label += ('\nΣωλήνες: Ø' + str(round(values['header_diameter']))
-                  + ', Ø' + str(round(values['riser_diameter'])))
+        label += ('\n' + "Σωλήνες: Φ" +
+                  str(round(values['header_diameter'])) + ", Φ" + 
+                  str(round(values['riser_diameter'])))
         text_size = self.draw.textsize(label, FONT_S)
         text_xy = (FONT_SIZE,
                    self.DRAWING_HEIGHT - text_size[1] - FONT_SIZE)
@@ -975,7 +976,7 @@ class Drawing:
         # write instructions for operator 1
         location = [2*self.FONT_SIZE, 2*self.FONT_SIZE]
 
-        self.draw.text(location, 'Χρήσιμα βήματα:', 'black', self.FONT)
+        self.draw.text(location, "Χρήσιμα βήματα:", 'black', self.FONT)
         location[1] += int(2.5*self.FONT_SIZE)
 
         for n in range(1, 8):
@@ -988,7 +989,7 @@ class Drawing:
         # write instructions for operator 2
         location = [self.FONT_SIZE, self.FONT_SIZE]
 
-        self.draw.text(location, 'Χρήσιμα υπο-βήματα:', 'black',
+        self.draw.text(location, "Χρήσιμα υπο-βήματα:", 'black',
                        self.FONT)
         location[1] += int(2.5*self.FONT_SIZE)
 
@@ -1035,9 +1036,9 @@ class Drawing:
 
                 if m == 0:
                     if n in (1, 7):
-                        hard_order_text = '(Χωρίς αυστηρή διαδοχή)'
+                        hard_order_text = "(Χωρίς αυστηρή διαδοχή)"
                     else:
-                        hard_order_text = '(Με αυστηρή διαδοχή)'
+                        hard_order_text = "(Με αυστηρή διαδοχή)"
 
                     location[1] -= 0.5*self.FONT_SIZE/1.3
                     self.draw.text(location, hard_order_text, 'black',

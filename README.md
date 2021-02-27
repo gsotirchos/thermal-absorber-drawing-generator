@@ -11,8 +11,9 @@ welding machine operating conditions in the respective input fields. The
 main window and the laser operating conditions window are shown below.
 
 <p align="center">
-  <img src="./images/job_order_interface_main.png" width="40%" 
-  height="40%">
+  <img 
+  src="https://github.com/7555G/thermal-absorber-drawing-generator/blob/master/images/job_order_interface_main.PNG" 
+  width="40%" height="40%">
   <img src="./images/job_order_machine_settings.png" width="25%" 
   height="25%">
 </p>

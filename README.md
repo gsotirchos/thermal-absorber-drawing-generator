@@ -14,8 +14,9 @@ main window and the laser operating conditions window are shown below.
   <img 
   src="https://github.com/7555G/thermal-absorber-drawing-generator/blob/master/images/job_order_interface_main.PNG" 
   width="40%" height="40%">
-  <img src="./images/job_order_machine_settings.png" width="25%" 
-  height="25%">
+  <img 
+  src="https://github.com/7555G/thermal-absorber-drawing-generator/blob/master/images/job_order_machine_settings.PNG" 
+  width="25%" height="25%">
 </p>
 
 The current product naming convention is utilized in order to preselect 
